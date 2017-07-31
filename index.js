@@ -106,12 +106,12 @@ module.exports = function (source) {
       migrationOpts.contracts_build_directory = buildPath
       migrationOpts.provider = provisionOpts.provider
       migrationOpts.logger = Logger
-      migrationOpts.reset = true                                 // Force the migrations to re-run
 
       if (buildOpts.skip_migrate) {
         Logger.log('SKIPPING MIGRATIONS')
         returnContractAsSource(compiledContractPath, compilationFinished)
       } else {
+        migrationOpts.reset = true                                 // Force the migrations to re-run
         Logger.log('RUNNING MIGRATIONS')
         // Once all of the contracts have been compiled, we know we can immediately
         // try to run the migrations safely.
